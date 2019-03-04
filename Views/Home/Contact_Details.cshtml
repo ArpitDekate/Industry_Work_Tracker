@@ -1,0 +1,102 @@
+﻿@model LarsenNToubro.Models.Contact_Details
+
+@{
+    ViewBag.Title = "Contact Details";
+}
+
+<body style="background-image: url('/Content/img/back1.png')">
+    <div class="row" style="padding-top: 30px">
+        <button type="button" class="btn btn-primary disabled form-control font-weight-bold text-left" style="min-width:100%;background-color: #cb1616;white-space:normal !important; word-wrap: break-word; word-break: normal;"><h4>CONTACT DETAILS</h4></button>
+    </div>
+    <form style="padding-top: 30px" method="post">
+        <div style="padding-top: 40px; margin-top: -40px;">
+            <div class="row">
+                <div class="col-sm-2">
+                    <button type="button" class="btn btn-primary disabled form-control font-weight-bold" style="background-color: #d85b5b;white-space:normal !important; word-wrap: break-word; word-break: normal;">Contact Name</button>
+                </div>
+                <div class=" col-sm-5">
+                    <input type="text" class="form-control" placeholder="Enter Name" style="min-width:100%" name="contact_name" />
+                </div>
+                <div class="col-sm-2">
+                    <button type="button" class="btn btn-primary disabled form-control font-weight-bold" style="background-color: #d85b5b;white-space:normal !important; word-wrap: break-word; word-break: normal;">Status</button><br />
+                </div>
+                <div class="col-sm-3">
+                    <!--<input type="text" class="form-control" placeholder="In-Service,Retired,Transferred" style="min-width:75%" name="status" />-->
+                    <select class="form-control" name="status">
+                        <option>In-Service</option>
+                        <option>Retired</option>
+                        <option>Transferred</option>
+                    </select>
+                </div>
+            </div>
+            <br />
+            <div class="row">
+                <div class="col-sm-2 ">
+                    <button type="button" class="btn btn-primary disabled form-control font-weight-bold" style="background-color: #d85b5b;white-space:normal !important; word-wrap: break-word; word-break: normal;">Designation</button>
+                </div>
+                <div class="col-sm-5">
+                    <input type="text" class=" form-control" placeholder="Enter Designation" style="min-width:100%" name="designation"/>
+                </div>
+                <div class="col-sm-2">
+                    <button type="button" class="btn btn-primary disabled form-control font-weight-bold" style="background-color:#d85b5b;white-space:normal !important; word-wrap: break-word; word-break: normal;">Department</button>
+                </div>
+                <div class="col-sm-3">
+                    <input type="text" class="form-control" placeholder="Enter your Department" style="min-width:75%" name="department"/>
+                </div>
+            </div>
+            <br />
+            <div class="row">
+                <div class="col-sm-2">
+                    <button type="button" class="btn btn-primary disabled form-control font-weight-bold" style="background-color:#d85b5b;white-space:normal !important; word-wrap: break-word; word-break: normal;">Email ID</button>
+                </div>
+                <div class="col-sm-5">
+                    <input type="email" class="form-control" placeholder="Enter your Email" style="min-width:100%" name="email"/>
+                </div>
+                <div class="col-sm-2">
+                    <button type="button" class="btn btn-primary disabled form-control font-weight-bold" style="background-color:#d85b5b;white-space:normal !important; word-wrap: break-word; word-break: normal;">Mobile</button>
+                </div>
+                <div class=" col-sm-3">
+                    <input type="text" class="form-control" placeholder="Enter your number" id="number" style="min-width:75%" name="mobile"/>
+                </div>
+            </div>
+            <br />
+            <div class="row">
+                <div class="col-sm-2">
+                    <button type="button" class="btn btn-primary disabled form-control font-weight-bold" style="background-color:#d85b5b;white-space:normal !important; word-wrap: break-word; word-break: normal;">Linkedin</button>
+                </div>
+                <div class="col-sm-5">
+                    <input type="text" class="form-control" placeholder="Linkedin profile" style="min-width:100%" name="linkedin"/>
+                </div>
+                <div class="col-sm-2">
+                    <button type="button" class="btn btn-primary disabled form-control font-weight-bold" style="background-color:#d85b5b;white-space:normal !important; word-wrap: break-word; word-break: normal;">Office Ph.</button>
+                </div>
+                <div class=" col-sm-3">
+                    <input type="text" class="form-control" placeholder="Enter your office number" style="min-width:75%" name="office_ph"/>
+                </div>
+            </div>
+            <br />
+            <div class="row">
+                <div class="col-sm-2">
+                    <button type="button" class="btn btn-primary disabled form-control font-weight-bold" style="background-color:#d85b5b;white-space:normal !important; word-wrap: break-word; word-break: normal;">Responsible For</button>
+                </div>
+                <div class="col-sm-10">
+                    <input type="text" class="form-control" style="min-width:100%" name="responsible_for"/>
+                </div>
+            </div>
+            <br />
+            <div class="row">
+                <div class=" col-sm-2">
+                    <button type="button" class="btn btn-primary disabled form-control font-weight-bold" style="background-color: #d85b5b;white-space:normal !important; word-wrap: break-word; word-break: normal;">Area of Expertise</button>
+                </div>
+                <div class="col-sm-10">
+                    <input type="text" class="form-control" placeholder="Enter your area of expertise" style="min-width:100%" name="area"/>
+                </div>
+            </div>
+        </div>
+        <br />
+        <br />
+        <div align="right">
+            <input type="submit" class="bnt btn-primary btn-lg form-control" />
+        </div>
+    </form>
+</body>

@@ -1,0 +1,462 @@
+﻿@{
+    ViewBag.Title = "Contact History";
+}
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.2.3/jquery.min.js"></script>
+
+
+    <script type="text/javascript">
+        $('.convlist').click(function () {
+            $(this).siblings('input:checkbox').prop('checked', false);
+        });
+    </script>
+</head>
+
+<body style="background-image: url('/Content/img/back1.png'); height:100%;">
+    <div align="right">
+        <button type="button" class="btn btn-primary mb-1 disabled" style="background-color: #cb1616">Quick Links</button>
+        <button type="button" class="btn btn-outline-primary mb-1" onclick="location.href='@Url.Action("Contact_Details", "Home")'">Add Contact</button>
+        <button type="button" class="btn btn-outline-primary mb-1">Action</button>
+        <button type="button" class="btn btn-outline-primary mb-1" onclick="location.href='@Url.Action("Opportunity", "Home")'">Opportunity History</button>
+    </div>
+    <br />
+    <br />
+    <div class="row">
+        <button type="button" class="btn btn-primary disabled form-control font-weight-bold text-left" style="background-color: #cb1616; white-space: normal !important; word-wrap:break-word; word-break:normal;"><h4>Contact History</h4></button>
+    </div><br /><br />
+    <form method="post">
+        <div style="padding-top: 40px; margin-top: -40px;">
+            <div class="row">
+                <div class="col-md-2">
+                    <button type="button" class="btn btn-primary disabled form-control" style="background-color: #d85b5b ;white-space:normal !important; word-wrap: break-word; word-break: normal;">Opportunity ID</button>
+                </div>
+                <div class="col-md-2">
+                    <input type="text" class="form-control" placeholder="Enter ID" name="Opportunity_ID" />
+                </div>
+                <div class="col-md-2">
+                    <button type="button" class="btn btn-primary disabled form-control" style="background-color: #d85b5b ;white-space:normal !important; word-wrap: break-word; word-break: normal;">Contact Person</button>
+                </div>
+                <div class="col-md-2">
+                    <input type="text" class="form-control" placeholder="Enter name" name="Contact_Person" />
+                </div>
+                <div class="col-md-2">
+                    <button type="button" class="btn btn-primary disabled form-control" style="background-color: #d85b5b ;white-space:normal !important; word-wrap: break-word; word-break: normal;">Status</button>
+                </div>
+                <div class="col-md-2">
+                    <select class="form-control" name="Status">
+                        <option value="open">Open</option>
+                        <option value="closed">Closed</option>
+                        <option value="discarded">Discarded</option>
+                    </select>
+                </div>
+            </div><br />
+                  <div class="row">
+                      <div class="col-md-2">
+                          <button type="button" class="btn btn-primary disabled form-control" style="background-color: #d85b5b ;white-space:normal !important; word-wrap: break-word; word-break: normal;">Contact ID</button>
+                      </div>
+                      <div class="col-md-3">
+                          <input type="text" class="form-control" placeholder="Enter Contact details" name="Contact_ID" />
+                      </div>
+
+                      <div class="col-md-3 ">
+                          <button type="button" class="btn btn-primary disabled form-control" style="background-color: #d85b5b ;white-space:normal !important; word-wrap: break-word; word-break: normal;" font-size="8px">Probability of Conversation</button>
+                      </div>
+                      <div class="col-md-1 " style="padding-top:25px">
+                          <input type="checkbox" class="subject-list" name="Prob_Conversion_100"> <label class="checkbox-inline">100%</label>
+                      </div>
+                      <div class="col-md-1" style="padding-top:25px">
+                          <input type="checkbox" class="subject-list" name="Prob_Conversion_gt80" /> <label class="checkbox-inline">>80%</label>
+                      </div>
+                      <div class="col-md-1" style="padding-top:25px">
+                          <input type="checkbox" class="subject-list" name="Prob_Conversion_gt50" /> <label class="checkbox-inline">>50%</label>
+                      </div>
+                      <div class="col-md-1" style="padding-top:25px">
+                          <input type="checkbox" class="subject-list" name="Prob_Conversion_lt50" /> <label class="checkbox-inline">&lt;50%</label>
+                      </div>
+
+                      <script type="text/javascript">
+                          $('.subject-list').on('change', function () {
+                              $('.subject-list').not(this).prop('checked', false);
+                          });
+                      </script>
+
+
+
+                  </div><br />
+            <div class="row">
+                <div class="col-md-2">
+                    <button type="button" class="btn btn-primary disabled form-control" style="background-color: #d85b5b ;white-space:normal !important; word-wrap: break-word; word-break: normal;">Conversation Label</button>
+                </div>
+                <div class="col-md-10">
+                    <textarea class="form-control" rows="2" cols="10" placeholder="Decsription" name="Conversation_Summary" style="min-width: 100% ;white-space:normal !important; word-wrap: break-word; word-break: normal;"></textarea>
+                </div>
+            </div><br />
+            <div class="row">
+                <div class="col-md-2">
+                    <button type="button" class="btn btn-primary disabled form-control" style="background-color: #d85b5b ;white-space:normal !important; word-wrap: break-word; word-break: normal;">Contact Type</button>
+                </div>
+                <div class="col-md-2">
+                    <select class="form-control" name="Contact_Type">
+                        <option value="mail">Mail</option>
+                        <option value="phone">Phone</option>
+                        <option value="phone">In Person Visit</option>
+                        <option value="phone">On-shore</option>
+                        <option value="phone">Off-shore</option>
+                    </select>
+                </div>
+                <div class="col-md-3">
+                    <button type="button" class="btn btn-primary disabled form-control" style="background-color: #d85b5b ;white-space:normal !important; word-wrap: break-word; word-break: normal;">Corresponding Type</button>
+                </div>
+                <div class=" col-md-2">
+                    <select class="form-control" name="Corresponding_Type">
+                        <option value="phone">Phone</option>
+                        <option value="blah">Blah</option>
+                    </select>
+                </div>
+            </div><br />
+            <div class=" row">
+                <div class="col-md-2">
+                    <button type="button" class="btn btn-primary disabled form-control" style="background-color: #d85b5b ;white-space:normal !important; word-wrap: break-word; word-break: normal;">Proposal Value</button>
+                </div>
+                <div class="col-md-2">
+                    <input type="number" class="form-control" placeholder="$" name="Proposal_Value" />
+                </div>
+
+                <div class="col-md-2">
+                    <button type="button" class="btn btn-primary disabled form-control" style="background-color: #d85b5b; white-space:normal !important; word-wrap: break-word; word-break: normal;">Contact Date & Time</button>
+                </div>
+                <div class="col-md-2">
+                    <input type="date" class="form-control" name="Contact_Date" />
+                </div>
+                <div class="col-md-2">
+                    <button type="button" class="btn btn-primary disabled form-control" style="background-color: #d85b5b ;white-space:normal !important; word-wrap: break-word; word-break: normal;">Contacted By</button>
+                </div>
+                <div class="col-md-2">
+                    <select class="form-control" name="Contacted_By">
+                        <option value="phone">Phone</option>
+                        <option value="blah">Blah</option>
+                    </select>
+                </div>
+            </div><br />
+            <div class="row">
+                <div class="col-md-2">
+                    <button type="button" class="btn btn-primary disabled form-control" style="background-color: #d85b5b ;white-space:normal !important; word-wrap: break-word; word-break: normal;">Actions Required</button>
+                </div>
+                <div class="col-md-4">
+                    <button type="button" class="btn btn-primary disabled form-control" style="background-color: #d85b5b ;white-space:normal !important; word-wrap: break-word; word-break: normal;">Action Description</button>
+                </div>
+                <div class="col-md-2">
+                    <button type="button" class="btn btn-primary disabled form-control" style="background-color: #d85b5b ;white-space:normal !important; word-wrap: break-word; word-break: normal;">Action Owner</button>
+                </div>
+                <div class="col-md-2">
+                    <button type="button" class="btn btn-primary disabled form-control" style="background-color: #d85b5b ;white-space:normal !important; word-wrap: break-word; word-break: normal;">Actions Due On</button>
+                </div>
+                <div class="col-md-2">
+                    <button type="button" class="btn btn-primary disabled form-control" style="background-color: #d85b5b ;white-space:normal !important; word-wrap: break-word; word-break: normal;">Actions Closed On</button>
+                </div>
+            </div><br />
+            <div class="row">
+                <div class="col-md-2" style="padding-left:40px; padding-top : 15px">
+                    <label class="form-check-label">
+                        <input type="checkbox" class="form-check-input" id="sales" name="Sales">Sales
+                    </label>
+                </div>
+                <div class="col-md-4">
+                    <input type="text" class="form-control" placeholder="Describe action" id="c1" name="Sales_AD" />
+                </div>
+                <div class="col-md-2">
+                    <!--    <select class="form-control" id="c2" name="Sales_AO"><option value="phone">Phone</option></select>-->
+                    <input type="text" class="form-control" placeholder="Action Owner" id="c2" name="Sales_AO" />
+                </div>
+                <div class="col-md-2">
+                    <input type="date" class="form-control" id="c3" name="Sales_ADO" />
+                </div>
+                <div class="col-md-2">
+                    <input type="date" class="form-control" id="c4" name="Sales_CO" />
+                </div>
+            </div><br />
+            <div class="row">
+                <div class="col-md-2" style="padding-left:40px; padding-top : 15px">
+                    <label class="form-check-label">
+                        <input type="checkbox" class="form-check-input" id="edp" name="Edp">EDP VDU
+                    </label>
+                </div>
+                <div class="col-md-4">
+                    <input type="text" class="form-control" placeholder="Describe action" id="c5" name="Edp_AD" />
+                </div>
+                <div class="col-md-2">
+                    <!--      <select class="form-control" id="c6" name="Edp_AO"><option value="phone">Phone</option></select>-->
+                    <input type="text" class="form-control" placeholder="Action Owner" id="c6" name="Edp_AO" />
+                </div>
+                <div class="col-md-2">
+                    <input type="date" class="form-control" id="c7" name="Edp_ADO" />
+                </div>
+                <div class="col-md-2">
+                    <input type="date" class="form-control" id="c8" name="Edp_CO" />
+                </div>
+            </div><br />
+            <div class="row">
+                <div class="col-md-2" style="padding-left:40px; padding-top : 15px">
+                    <label class="form-check-label">
+                        <input type="checkbox" class="form-check-input" id="hor" name="Hor">Horizontals
+                    </label>
+                </div>
+                <div class="col-md-4">
+                    <input type="text" class="form-control" placeholder="Describe action" id="c9" name="Hor_AD" />
+                </div>
+                <div class="col-md-2">
+                    <!--  <select class="form-control" id="c10" name="Hor_AO"><option value="phone">Phone</option></select>-->
+                    <input type="text" class="form-control" placeholder="Action Owner" id="c10" name="Hor_AO" />
+                </div>
+                <div class="col-md-2">
+                    <input type="date" class="form-control" id="c11" name="Hor_ADO" />
+                </div>
+                <div class="col-md-2">
+                    <input type="date" class="form-control" id="c12" name="Hor_CO" />
+                </div>
+            </div><br />
+            <div class="row">
+                <div class="col-md-2">
+                    <button type="button" class="btn btn-primary disabled form-control" style="background-color: #d85b5b ;white-space:normal !important; word-wrap: break-word; word-break: normal;">Folder Path</button>
+                </div>
+                <div class="col-md-2">
+                    <input type="text" class="form-control" placeholder="Enter path" name="Folder_Path" />
+                </div>
+                <div class="col-md-2">
+                    <button type="button" class="btn btn-primary disabled form-control" style="background-color: #d85b5b ;white-space:normal !important; word-wrap: break-word; word-break: normal;">Client's Name</button>
+                </div>
+                <div class="col-md-2">
+                    <input type="text" class="form-control" placeholder="Enter name" name="Client_Name" />
+                </div>
+                <div class="col-md-2">
+                    <button type="button" class="btn btn-primary disabled form-control" style="background-color: #d85b5b ;white-space:normal !important; word-wrap: break-word; word-break: normal;">SBU/Division</button>
+                </div>
+                <div class="col-md-2">
+                    <input type="text" class="form-control" placeholder="Enter division name" name="Sub_Division" />
+                </div>
+            </div><br />
+            <div class="row">
+                <div class="col-md-2">
+                    <button type="button" class="btn btn-primary disabled form-control" style="background-color: #d85b5b ;white-space:normal !important; word-wrap: break-word; word-break: normal;">Country</button>
+                </div>
+                <div class='col-md-2'>
+                    <select id="country" class='form-control' name="Country" required><option value="">-- Country --</option></select>
+                </div>
+                <div class="col-md-2">
+                    <button type="button" class="btn btn-primary disabled form-control" style="background-color: #d85b5b ;white-space:normal !important; word-wrap: break-word; word-break: normal;">State</button>
+                </div>
+                <div class="col-md-2">
+                    <select id="region" class='form-control' name="State" required><option value="">-- State --</option></select>
+                </div>
+                <div class="col-md-2">
+                    <button type="button" class="btn btn-primary disabled form-control" style="background-color: #d85b5b ;white-space:normal !important; word-wrap: break-word; word-break: normal;">City</button>
+                </div>
+                <div class="col-md-2">
+                    <select id="city" class='form-control' name="City" required>
+                        <option value="">-- City --</option>
+
+                    </select>
+                </div>
+            </div><br />
+            <div class="row">
+                <div class="col-md-2">
+                    <button type="button" class="btn btn-primary disabled form-control" style="background-color: #d85b5b ;white-space:normal !important; word-wrap: break-word; word-break: normal;">Sales Region</button>
+                </div>
+                <div class="col-md-2">
+                    <select class="form-control" name="Sales_Region">  <option value="phone">Phone</option> </select>
+                </div>
+
+                <div class="col-md-2">
+                    <button type="button" class="btn btn-primary disabled form-control" style="background-color: #d85b5b ;white-space:normal !important; word-wrap: break-word; word-break: normal;">Next Contact Date & Time</button>
+                </div>
+                <div class="col-md-2">
+                    <input type="date" class="form-control" name="Next_Contact_Date" />
+                </div>
+                <div class="col-md-2">
+                    <button type="button" class="btn btn-primary disabled form-control" style="background-color: #d85b5b ;white-space:normal !important; word-wrap: break-word; word-break: normal;">Appointment Fixed For</button>
+                </div>
+                <div class="col-md-2">
+                    <input type="text" class="form-control" placeholder="Enter name" name="Appointment_Fixed_For" />
+                </div>
+            </div><br />
+            <div class="row">
+                <div class="col-md-2">
+                    <button type="button" class="btn btn-primary disabled form-control" style="background-color: #d85b5b ;white-space:normal !important; word-wrap: break-word; word-break: normal;">Remarks</button>
+                </div>
+                <div class="col-md-10">
+                    <textarea class="form-control" rows="1" cols="10" placeholder="Decsription" name="Remarks" style="min-width: 100% ;white-space:normal !important; word-wrap: break-word; word-break: normal;"></textarea>
+                </div>
+            </div>
+            <br /><br />
+
+            <div align="center">
+                <input type="submit" class="btn btn-primary btn-sm form-control" />
+            </div><br />
+        </div>
+    </form>
+</body>
+
+
+@section Scripts
+{
+    <script>
+        $(document).on("click", "[type='checkbox']", function (e) {
+            if (this.checked) {
+                $(this).attr("value", "true");
+            } else {
+                $(this).attr("value", "false");
+            }
+        });
+
+        var checkbox1 = document.querySelector("#sales");
+        var checkbox2 = document.querySelector("#edp");
+        var checkbox3 = document.querySelector("#hor");
+        var i1 = document.querySelector("#c1");
+        var i2 = document.querySelector("#c2");
+        var i3 = document.querySelector("#c3");
+        var i4 = document.querySelector("#c4");
+        var i5 = document.querySelector("#c5");
+        var i6 = document.querySelector("#c6");
+        var i7 = document.querySelector("#c7");
+        var i8 = document.querySelector("#c8");
+        var i9 = document.querySelector("#c9");
+        var i10 = document.querySelector("#c10");
+        var i11 = document.querySelector("#c11");
+        var i12 = document.querySelector("#c12");
+        var t1 = function (e) {
+            i1.disabled = !e.target.checked;
+            i2.disabled = !e.target.checked;
+            i3.disabled = !e.target.checked;
+            i4.disabled = !e.target.checked;
+        };
+        var t2 = function (e) {
+            i8.disabled = !e.target.checked;
+            i5.disabled = !e.target.checked;
+            i6.disabled = !e.target.checked;
+            i7.disabled = !e.target.checked;
+        };
+        var t3 = function (e) {
+            i12.disabled = !e.target.checked;
+            i9.disabled = !e.target.checked;
+            i10.disabled = !e.target.checked;
+            i11.disabled = !e.target.checked;
+        };
+        t1({ target: checkbox1 });
+        t2({ target: checkbox2 });
+        t3({ target: checkbox3 });
+        checkbox1.addEventListener("change", t1);
+        checkbox2.addEventListener("change", t2);
+        checkbox3.addEventListener("change", t3);
+
+        $(document).ready(function () {
+            //-------------------------------SELECT CASCADING-------------------------//
+            var selectedCountry = selectedRegion = selectedCity = countryCode = "";
+
+            // This is a demo API key for testing purposes. You should rather request your API key (free) from http://battuta.medunes.net/
+
+            //....... new API key limit exceeded photo.
+            // var BATTUTA_KEY = "71e8cf12332ef338da9ee23910109beb";
+            //var BATTUTA_KEY = "926af39f2750053103c0b3f3bd80a406";
+            var BATTUTA_KEY = "956568fb22ed6bfdeddbcd34c164869e";
+
+
+            // Populate country select box from battuta API
+            url =
+                "https://battuta.medunes.net/api/country/all/?key=" + BATTUTA_KEY + "&callback=?";
+
+            // EXTRACT JSON DATA.
+            $.getJSON(url, function (data) {
+                console.log(data);
+                $.each(data, function (index, value) {
+                    // APPEND OR INSERT DATA TO SELECT ELEMENT. Set the country code in the id section rather than in the value.
+                    $("#country").append(
+                        '<option id="' + value.code + '" value="' + value.name + '">' + value.name + "</option>"
+                    );
+                });
+            });
+            // Country selected --> update region list .
+            $("#country").change(function () {
+                selectedCountry = this.options[this.selectedIndex].text;
+                countryCode = $(this).children(":selected").attr("id");
+                url =
+                    "https://battuta.medunes.net/api/region/" +
+                    countryCode +
+                    "/all/?key=" +
+                    BATTUTA_KEY +
+                    "&callback=?";
+                $.getJSON(url, function (data) {
+                    $("#region option").remove();
+                    $.each(data, function (index, value) {
+                        // APPEND OR INSERT DATA TO SELECT ELEMENT.
+                        $("#region").append(
+                            '<option value="' + value.region + '">' + value.region + "</option>"
+                        );
+                    });
+                });
+            });
+            // Region selected --> updated city list
+            $("#region").on("change", function () {
+                selectedRegion = this.options[this.selectedIndex].text;
+                // Populate country select box from battuta API
+                region = $("#region").val();
+                url =
+                    "https://battuta.medunes.net/api/city/" +
+                    countryCode +
+                    "/search/?region=" +
+                    region +
+                    "&key=" +
+                    BATTUTA_KEY +
+                    "&callback=?";
+                $.getJSON(url, function (data) {
+                    console.log(data);
+                    $("#city option").remove();
+                    $.each(data, function (index, value) {
+                        // APPEND OR INSERT DATA TO SELECT ELEMENT.
+                        $("#city").append(
+                            '<option value="' + value.city + '">' + value.city + "</option>"
+                        );
+                    });
+                });
+            });
+            // city selected --> update location string
+            $("#city").on("change", function () {
+                selectedCity = this.options[this.selectedIndex].text;
+                $("#location").html(
+                    "Locatation: Country: " +
+                    selectedCountry +
+                    ", Region: " +
+                    selectedRegion +
+                    ", City: " +
+                    selectedCity
+                );
+            });
+        });
+
+        // process form
+        function processForm() {
+            var username = password = country = region = city = '';
+            username = $('#username').val();
+            password = $('#password').val();
+            country = $('#country').val();
+            region = $('#region').val();
+            city = $('#city').val();
+            if (username !== '' && password !== '' && country !== '' && region !== '' && city !== '') {
+                $("#location").html(
+                    "Username: " + username +
+                    " /Password: " + password +
+                    " /Locatation: Country: " +
+                    country +
+                    ", Region: " +
+                    region +
+                    ", City: " +
+                    city
+                );
+            } else {
+                $("#location").html('Complete Form 1st');
+                return false;
+            }
+        }
+
+    </script>
+}

@@ -1,0 +1,341 @@
+﻿@{
+    ViewBag.Title = "Industry Records";
+}
+
+<body style="background-image: url('/Content/img/back1.png'); height:100%;">
+    <p> @ViewBag.result </p>
+    <div align="right">
+        <form action="https://www.google.com">
+            <input type="text" placeholder=" Search" maxlength="30" id="search">
+            <input type="submit" value="Go!" id="submit">
+        </form>
+        <br />
+        <button type="button" class="btn btn-primary mb-1 disabled text-left" style="background-color: #cb1616;white-space:normal !important; word-wrap: break-word; word-break: normal;">Quick Links</button>
+        <button type="button" class="btn btn-outline-primary mb-1 bg-blue" onclick="location.href='@Url.Action("Contact_History","Home")'">Contact History</button>
+        <button type="button" class="btn btn-outline-primary mb-1 bg-blue">Contact Details</button>
+        <button type="button" class="btn btn-outline-primary mb-1 bg-blue">Reports</button>
+
+        <style type="text/css">
+            #search {
+                min-width: 33%;
+                padding: 7px;
+                border: 1px solid blue;
+            }
+
+            #submit {
+                padding: 16px;
+                background: blue;
+                border: 1px solid black;
+                color: white;
+                margin-left: -6px;
+                cursor: pointer;
+            }
+
+                #submit:hover {
+                    backface-visibility: hidden;
+                    transition: all 0.40s;
+                }
+        </style>
+    </div>
+    <br />
+    <br />
+    <form method="post">
+        <div class="row">
+            <div class="col-sm-2">
+                <button type="button" class="btn btn-primary disabled form-control font-weight-bold" style="background-color: #d85b5b;white-space:normal !important; word-wrap: break-word; word-break: normal;">Client ID</button>
+            </div>
+            <div class="col-sm-2">
+                <input type="text" class="form-control" placeholder="Enter ID" name="Client_id">
+            </div>
+            <div class="col-sm-2">
+                <button type="button" class="btn btn-primary disabled form-control font-weight-bold" style="background-color: #d85b5b;white-space:normal !important; word-wrap: break-word; word-break: normal;">Client Name</button>
+            </div>
+            <div class="col-sm-6">
+                <input type="text" class="form-control" placeholder="Enter name" style="min-width: 100%" name="Client_name">
+            </div>
+        </div><br />
+
+        <div class="row">
+            <div class="col-sm-2">
+                <button type="button" class="btn btn-primary disabled form-control font-weight-bold" style="background-color: #d85b5b;white-space:normal !important; word-wrap: break-word; word-break: normal;">SUB/Division</button>
+            </div>
+            <div class="col-sm-2">
+                <input type="text" class="form-control" placeholder="Enter division" name="Sub_division" />
+            </div>
+            <div class="col-sm-2">
+                <button type="button" class="btn btn-primary disabled form-control font-weight-bold" style="background-color: #d85b5b;white-space:normal !important; word-wrap: break-word; word-break: normal;">Client Code</button>
+            </div>
+            <div class="col-sm-1">
+                <input type="text" class="form-control col-sm-12"  placeholder="Code" name="Client_code"/>
+            </div>
+           
+            <div class="col-sm-1"style="padding-top: 10px;margin-top:13px">
+                <div class="form-check-inline">
+                    <input type="checkbox" class="form-check-input sel_one" name="Parent_org" id="Parent_Org">
+                    <label class="form-check-label">Parent Org</label>
+                </div>
+            </div>
+
+            <div class="col-sm-1" style="padding-top: 10px;margin-top:20px">
+                <div class="form-check-inline">
+                    <input type="checkbox" class="form-check-input sel_one" name="Subsidiaries" id="Subsidiaries">
+                    <label class="form-check-label">Subsidiaries</label>
+                </div>
+            </div>
+
+            <script type="text/javascript">
+                $('.sel_one').on('change', function () {
+                    $('.sel_one').not(this).prop('checked', false);
+                });
+            </script>
+
+            <div class="col-sm-1" style="padding-top: 10px;margin-top:20px">
+                <div class="form-check-inline">
+                    <input type="checkbox" class="form-check-input" name="Hq">
+                    <label class="form-check-label">HQ</label>
+
+                </div>
+            </div>
+
+            <div class="col-sm-1" style="padding-top: 10px;margin-top:20px">
+                <div class="form-check-inline">
+                    <input type="checkbox" class="form-check-input sel_one_1" name="Existing">
+                    <label class="form-check-label">Existing</label>
+                </div>
+            </div>
+            <div class="col-sm-1" style="padding-top: 10px;margin-top:20px">
+                <div class="form-check-inline">
+                    <input type="checkbox" class="form-check-input sel_one_1" name="Prospects">
+                    <label class="form-check-label">Prospects</label>
+                </div>
+            </div>
+            <script type="text/javascript">
+                $('.sel_one_1').on('change', function () {
+                    $('.sel_one_1').not(this).prop('checked', false);
+                });
+            </script>
+        </div>
+
+        <br />
+        
+        <div class="row">
+            <div class="col-sm-2">
+                <button type="button" class="btn btn-primary disabled form-control font-weight-bold" style="background-color: #d85b5b;white-space:normal !important; word-wrap: break-word; word-break: normal;">Address</button>
+            </div>
+            <div class="col-sm-5">
+                <input type="text" class="form-control" placeholder="Address" style="min-width:100%" name="Address" />
+            </div>
+            <div class="col-sm-2">
+                <button type="button" class="btn btn-primary disabled form-control font-weight-bold" style="background-color: #d85b5b;white-space:normal !important; word-wrap: break-word; word-break: normal;">Parent</button>
+            </div>
+            <div class="col-sm-3">
+                <input type="text" class="form-control" placeholder="Enter " style="min-width:100%" name="Parent" id="Parent" />
+            </div>
+        </div><br />
+        <div class="row">
+            <div class="col-sm-2">
+                <button type="button" class="btn btn-primary disabled form-control font-weight-bold" style="background-color: #d85b5b;white-space:normal !important; word-wrap: break-word; word-break: normal;">Country</button>
+            </div>
+            <div class="col-sm-2">
+                <select class="form-control" id="country" name="Country">
+                    <option value="">--Country --</option>
+                </select>
+            </div>
+            <div class="col-sm-2">
+                <button type="button" class="btn btn-primary disabled form-control font-weight-bold" style="background-color: #d85b5b;white-space:normal !important; word-wrap: break-word; word-break: normal;">State</button>
+            </div>
+            <div class="col-sm-2">
+                <select class="form-control" id="region" name="State">
+                    <option value="">--State--</option>
+                </select>
+            </div>
+        </div><br />
+        <div class="row">
+            <div class="col-sm-2">
+                <button type="button" class="btn btn-primary disabled form-control font-weight-bold" style="background-color: #d85b5b;white-space:normal !important; word-wrap: break-word; word-break: normal;">City/Town</button>
+            </div>
+            <div class="col-sm-2">
+                @*<select class="form-control" id="city" name="City_town">
+                    <option>--City/Town--</option>
+                </select>*@
+                <input type="text" class="form-control" placeholder="City/Town" name="City_town" />
+            </div>
+            <div class="col-sm-2">
+                <button type="button" class="btn btn-primary disabled form-control font-weight-bold" style="background-color: #d85b5b;white-space:normal !important; word-wrap: break-word; word-break: normal;">Sales Region</button>
+            </div>
+            <div class="col-sm-2">
+                <select class="form-control" name="Sales_region">
+                    <option>--Sales Region--</option>
+                    <option>Hello</option>
+                </select>
+            </div>
+        </div><br />
+        <div class="row">
+            <div class="col-sm-2">
+                <button type="button" class="btn btn-primary disabled form-control font-weight-bold" style="background-color: #d85b5b;white-space:normal !important; word-wrap: break-word; word-break: normal;">Contact No</button>
+            </div>
+            <div class="col-sm-2">
+                <input type="text" class="form-control" placeholder="Contact No" name="Contact_no" />
+            </div>
+            <div class="col-sm-2">
+                <button type="button" class="btn btn-primary disabled form-control font-weight-bold" style="background-color: #d85b5b;white-space:normal !important; word-wrap: break-word; word-break: normal;">Email</button>
+            </div>
+            <div class="col-sm-6">
+                <input type="text" class="form-control" placeholder="Email" style="min-width:100%" name="Email" />
+            </div>
+        </div><br />
+        <div class="row">
+            <div class="col-sm-2">
+                <button type="button" class="btn btn-primary disabled form-control font-weight-bold" style="background-color: #d85b5b;white-space:normal !important; word-wrap: break-word; word-break: normal;">Website</button>
+            </div>
+            <div class="col-sm-6">
+                <input type="text" class="form-control" placeholder="Enter Website" style="min-width:100%" name="Website" />
+            </div>
+            <div class="col-sm-1">
+                <button type="button" class="btn btn-primary disabled form-control font-weight-bold" style="background-color: #d85b5b;white-space:normal !important; word-wrap: break-word; word-break: normal;">Fax</button>
+            </div>
+            <div class="col-sm-3">
+                <input type="text" class="form-control" placeholder="Fax" name="Fax" />
+            </div>
+        </div>
+        <br /><br />
+        <button type="button" class="btn btn-primary disabled form-control font-weight-bold text-left" style="background-color:#cb1616; white-space:normal !important; word-wrap: break-word; word-break: normal; min-width:100%"><h4>COMPANY INFORMATION</h4></button><br /><br />
+        <div class="row">
+            <div class="col-sm-2">
+                <button type="button" class="btn btn-primary disabled form-control font-weight-bold" style="background-color: #d85b5b;white-space:normal !important; word-wrap: break-word; word-break: normal;">Founded On</button>
+            </div>
+            <div class="col-sm-3">
+                <input type="date" class="form-control" style="min-width:100%" name="Founded_on" />
+            </div>
+            <div class="col-sm-2">
+                <button type="button" class="btn btn-primary disabled form-control font-weight-bold" style="background-color: #d85b5b;white-space:normal !important; word-wrap: break-word; word-break: normal;">No Of Employees</button>
+            </div>
+            <div class="col-sm-5">
+                <input type="text" class="form-control" style="min-width:100%" name="No_of_employees" />
+            </div>
+        </div>
+        <br />
+        <div class="row">
+            <div class="col-sm-2">
+                <button type="button" class="btn btn-primary disabled form-control font-weight-bold" style="background-color: #d85b5b;white-space:normal !important; word-wrap: break-word; word-break: normal;">Revenue</button>
+            </div>
+            <div class="col-sm-4">
+                <input type="text" class="form-control" style="min-width:100%" name="Revenue" />
+            </div>
+            <div class="col-sm-2">
+                <button type="button" class="btn btn-primary disabled form-control font-weight-bold" style="background-color: #d85b5b;white-space:normal !important; word-wrap: break-word; word-break: normal;">Register No</button>
+            </div>
+            <div class="col-sm-4">
+                <input type="text" class="form-control" style="min-width:100%" name="Register_no" />
+            </div>
+
+        </div><br />
+        <div class="row">
+            <div class="col-sm-3">
+                <button type="button" class="btn btn-primary disabled form-control font-weight-bold" style="background-color: #d85b5b;white-space:normal !important; word-wrap: break-word; word-break: normal;">Production and Services</button>
+            </div>
+            <div class="col-sm-9">
+                <input type="text" class="form-control" style="min-width:100%" name="Production_services" />
+            </div>
+        </div><br />
+        <div class="row">
+            <div class="col-sm-2">
+                <button type="button" class="btn btn-primary disabled form-control font-weight-bold" style="background-color: #d85b5b;white-space:normal !important; word-wrap: break-word; word-break: normal;">Remarks</button>
+            </div>
+            <div class="col-sm-10">
+                <input type="text" class="form-control" style="min-width:100%" name="Remarks" />
+            </div>
+        </div><br /><br />
+        <button type="button" class="btn btn-primary disabled form-control font-weight-bold text-left" style="background-color:#cb1616; white-space: normal !important; word-wrap: break-word; word-break: normal; min-width:100%"><h4>L&T TS OPERATIONS</h4></button><br /><br />
+        <div class="row">
+            <div class="col-sm-2">
+                <button type="button" class="btn btn-primary disabled form-control font-weight-bold" style="background-color: #d85b5b; white-space:normal !important; word-wrap: break-word; word-break: normal;">Domain Category</button>
+            </div>
+            <div class="col-sm-10">
+                <select class="form-control" name="Domain_category">
+                    <option>Electrical</option>
+                    <option>Drives</option>
+                    <option>Power Electronics</option>
+                    <option>Power</option>
+                    <option>EDP</option>
+                </select>
+            </div>
+        </div><br />
+        <div class="row">
+            <div class="col-sm-1">
+                <button type="button" class="btn btn-primary disabled form-control font-weight-bold" style="background-color: #d85b5b;white-space:normal !important; word-wrap: break-word; word-break: normal;">ADM</button>
+            </div>
+            <div class="col-sm-2">
+                <select class="form-control" name="ADM">
+                    <option>Hello</option>
+
+                </select>
+            </div>
+
+
+            <div class="col-sm-2">
+                <button type="button" class="btn btn-primary disabled form-control font-weight-bold" style="background-color: #d85b5b;white-space:normal !important; word-wrap: break-word; word-break: normal;">ARM/Sales</button>
+            </div><div class="col-sm-2">
+                <select class="form-control" name="ARM_sales">
+                    <option>Hello</option>
+
+                </select>
+            </div>
+
+            <div class="col-sm-2">
+                <button type="button" class="btn btn-primary disabled form-control font-weight-bold" style="background-color: #d85b5b; white-space:normal !important; word-wrap: break-word; word-break: normal;">Pre-Sales</button>
+            </div>
+            <div class="col-sm-3">
+                <select class="form-control" style="min-width:100%" name="Pre_sales">
+                    <option>Hello</option>
+
+                </select>
+            </div>
+        </div><br />
+
+        <div class="row">
+            <div class="col-sm-2">
+                <button type="button" class="btn btn-primary disabled form-control font-weight-bold" style="background-color: #d85b5b; white-space:normal !important; word-wrap: break-word; word-break: normal;">Remarks</button>
+            </div>
+            <div class="col-sm-10">
+                <input type="text" class="form-control" style="min-width:100%" name="Remarks1" />
+            </div>
+        </div>
+        <br />
+        <br />
+        <div align="right">
+            <input type="submit" class="bnt btn-primary btn-lg form-control" />
+        </div>
+    </form>
+</body>
+
+@section Scripts
+{
+    <script>
+        $(document).on("click", "[type='checkbox']", function (e) {
+            if (this.checked) {
+                $(this).attr("value", "true");
+            } else {
+                $(this).attr("value", "false");
+            }
+        });
+
+        var checkbox = document.querySelector("#Parent_Org");
+        var input = document.querySelector("#Parent");
+
+        var toogleInput = function (e) {
+            input.disabled = e.target.checked;
+        };
+
+        toogleInput({ target: checkbox });
+        checkbox.addEventListener("change", toogleInput);
+    </script>
+    <script type="text/javascript" src="~/Scripts/country.js"></script>
+    <script src="~/Scripts/countries.js"></script>
+    <script>
+        populateCountries("country", "region");
+        populateCountries("country2")
+
+    </script>
+}
+

@@ -1,0 +1,101 @@
+﻿@{
+    ViewBag.Title = "Opportunity_Converted";
+}
+
+<style>
+    .table-sticky > thead > tr > th,
+    .table-sticky > thead > tr > td {
+        background: #009688;
+        color: #fff;
+        top: 0px;
+        position: sticky;
+    }
+
+    .table-height {
+        height: 250px;
+        display: block;
+        overflow: scroll;
+        width: 100%;
+    }
+
+    table {
+        border-collapse: collapse;
+        border-spacing: 0;
+    }
+</style>
+<head>
+    <script>
+        $(document).ready(function () {
+            $("#mySearch2").on("keyup", function () {
+                var value = $(this).val().toLowerCase();
+                $("#tab2 tr").filter(function () {
+                    $(this).toggle($(this).text().toLowerCase().indexOf(value) > -1);
+                });
+            });
+        });
+    </script>
+</head>
+
+
+<body style=" background-image: url('../../Content/img/back1.png')" ;>
+    <input type="text" id="mySearch2" class="form-control" style=" min-width: 100%; align-self:center" placeholder="Search" />
+    <div class="table-responsive table-height">
+        <table class="table table-striped  table-bordered table-sticky" id="tab2">
+            <thead>
+                <tr>
+                    <th>Opportunity ID </th>
+                    <th>Date</th>
+                    <th>Opportunity Status</th>
+                    <th>Description</th>
+                    <th>Opportunity Value</th>
+                    <th>Opportunity Domain</th>
+                    <th> Owner Delivery</th>
+                    <th> Owner Sales</th>
+                </tr>
+            </thead>
+            <tbody>
+
+                @foreach (var j in ViewBag.data2)
+                {
+                <tr class="Search">
+                    @if (@j.Opportunity_status == "Active" || @j.Opportunity_status == "active" || @j.Opportunity_status == "Ongoing" || @j.Opportunity_status == "ongoing"
+                        || @j.Opportunity_status == "Pending" || @j.Opportunity_status == "pending" || @j.Opportunity_status == "due" || @j.Opportunity_status == "Due" || @j.Opportunity_status == "DUE")
+                    {
+                        <!-- <td><a data-toggle="modal" data-target="#opportunity_lost_modal3">j.Opportunity_id </a> </td>-->
+                        <td>@j.Opportunity_id</td>
+                        <td>@j.O_date</td>
+                        <td>@j.Opportunity_status</td>
+                        <td>@j.Opportunity_description</td>
+                        <td>@j.Opportunity_value</td>
+                        <td>@j.Opportunity_domain</td>
+                        <td>@j.Opportunity_owner_delivery</td>
+                        <td>@j.Opportunity_owner_sales</td>
+                    }
+                </tr>
+                }
+            </tbody>
+        </table>
+    </div>
+
+
+    <div class="modal fade" id="opportunity_lost_modal3">
+        <!--data-backdrop="static" data-keyboard="false">-->
+        <div class="modal-dialog modal-lg modal-dialog-centered" style="min-width:90%">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h4 class="modal-title">Opportunity Details (Lost) </h4>
+                    <button type="button" class="close" data-dismiss="modal">&times;</button>
+                </div>
+                <div class="modal-body">
+                    @Html.Partial("/Views/Home/CH_hyperlink.cshtml")
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-danger btn-lg" data-dismiss="modal">Close</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+</body>
+
+

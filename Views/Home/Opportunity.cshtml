@@ -1,0 +1,79 @@
+﻿@Html.ValidationSummary(true)
+
+@model LarsenNToubro.Models.Opportunity
+
+@{
+    ViewBag.Title = "Opportunity";
+}
+
+<body style="background-image: url('/Content/img/back1.png')">
+    <div align="right">
+        <button type="button" class="btn btn-outline-primary"  onclick="location.href='@Url.Action("Contact_History", "Home")'">Contact History</button>
+        <button type="button" class="btn btn-outline-primary" onclick="location.href='@Url.Action("Contact_Details", "Home")'">Add Contact Details</button>
+    </div>
+    <form method="post">
+        <div class="row" style="padding-top: 30px">
+            <button type="button" class="btn btn-primary disabled form-control font-weight-bold text-left" style="min-width:100%;background-color: #cb1616;white-space:normal !important; word-wrap: break-word; word-break: normal;"><h4>OPPORTUNITY</h4></button>
+        </div>
+        <div class="row" style="padding-top: 30px">
+            <div class="col-md-2">
+                <button type="button" class="btn btn-primary disabled form-control font-weight-bold" style="background-color: #d85b5b;white-space:normal !important; word-wrap: break-word; word-break: normal;">Opportunity ID</button>
+            </div>
+            <div class="col-md-2">
+                <input type="text" class="form-control" placeholder="Enter ID" name="opportunity_id" required tabindex="1"/>
+            </div>
+            <div class="col-md-2">
+                <button type="button" class="form-control btn btn-primary disabled font-weight-bold" style="background-color: #d85b5b;white-space:normal !important; word-wrap: break-word; word-break: normal;">Date</button>
+            </div>
+            <div class="col-md-2">
+                <input type="date" class="form-control" name="o_date" required tabindex="2"/>
+            </div>
+            <div class="col-md-2">
+                <button type="button" class="form-control btn btn-primary disabled font-weight-bold" style="background-color: #d85b5b;white-space:normal !important; word-wrap: break-word; word-break: normal; font-size: 12px;">Opportunity Status</button>
+            </div>
+            <div class="col-md-2">
+                <input type="text" class="form-control" placeholder="Status" name="opportunity_status" tabindex="3"/>
+            </div>
+        </div>
+        <br />
+        <div class="row">
+            <div class="col-md-2">
+                <button type="button" class="form-control btn btn-primary disabled font-weight-bold" style="background-color: #d85b5b;white-space:normal !important; word-wrap: break-word; word-break: normal;">Opportunity Description</button>
+            </div>
+            <div class="col-md-10">
+                <textarea class="form-control" rows="2" cols="11" placeholder="Decsription" style="min-width: 100%" name="opportunity_description" tabindex="4"></textarea>
+            </div>
+        </div>
+        <br />
+        <div class="row">
+            <div class="col-md-2">
+                <button type="button" class="form-control btn btn-primary disabled font-weight-bold" style="background-color: #d85b5b;white-space:normal !important; word-wrap: break-word; word-break: normal;">Opportunity Value</button>
+            </div>
+            <div class="col-md-2">
+                <input type="text" class="form-control" placeholder="Value" name="opportunity_value" tabindex="5"/>
+            </div>
+            <div class="col-md-2">
+                <button type="button" class="form-control btn btn-primary disabled font-weight-bold" style="background-color: #d85b5b;white-space:normal !important; word-wrap: break-word; word-break: normal;">Opportunity Domain</button>
+            </div>
+            <div class="col-md-2">
+                <input type="text" class="form-control" id="o_domain" placeholder="Domain" name="opportunity_domain" tabindex="6"/>
+            </div>
+            <div class="col-md-2">
+                <button type="button" class="form-control btn btn-primary disabled font-weight-bold" style="background-color: #d85b5b;white-space:normal !important; word-wrap: break-word; word-break: normal; font-size:12px">Opportunity Owner (Delivery & Sales)</button>
+            </div>
+            <div class="col-md-2">
+                <div class="row">
+                    <input type="text" class="form-control" id="o_own" placeholder="Owner" name="opportunity_owner_delivery" tabindex="7"/>
+                </div>
+                <div class="row">
+                    <input type="text" class="form-control" id="o_dns" placeholder="Delivery/Sales" name="opportunity_owner_sales" tabindex="8"/>
+                </div>
+            </div>
+        </div>
+        <br />
+        <br />
+        <div align="right">
+            <input type="submit" class="btn btn-primary btn-sm form-control" />
+        </div>
+    </form>
+</body>

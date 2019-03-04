@@ -1,0 +1,111 @@
+﻿
+@{
+    ViewBag.Title = "CH_hyperlink";
+}
+
+<style>
+    .table-sticky > thead > tr > th,
+    .table-sticky > thead > tr > td {
+        background: #009688;
+        color: #fff;
+        top: 0px;
+        position: sticky;
+    }
+
+    .table-height {
+        height: 250px;
+        display: block;
+        overflow: scroll;
+        width: 100%;
+    }
+
+    table {
+        border-collapse: collapse;
+        border-spacing: 0;
+    }
+</style>
+
+<head>
+    <script>
+        $(document).ready(function () {
+            $("#mySearch44").on("keyup", function () {
+                var value = $(this).val().toLowerCase();
+                $("#tab33 tr").filter(function () {
+                    $(this).toggle($(this).text().toLowerCase().indexOf(value) > -1);
+                });
+            });
+        });
+    </script>
+</head>
+
+
+<body style=" background-image: url('../../Content/img/back1.png')" ;>
+    <input type="text" id="mySearch44" class="form-control" style=" min-width: 100%; align-self:center" placeholder="Search" />
+    <div class="table-responsive table-height">
+        <table class="table table-striped  table-bordered table-sticky" id="tab33">
+            <thead>
+                <tr>
+                    <th>Opportunity ID </th>
+                    <th>Contact Person</th>
+                    <th>Status</th>
+                    <th>Contact ID</th>
+                    <th>Probability Of Conversion </th>
+                    <th>Conversation Label</th>
+                </tr>
+            </thead>
+            <tbody>
+
+                @foreach (var j in ViewBag.data)
+                {
+                
+                    <tr class="Search">
+
+                        <td>@j.Opportunity_ID </td>
+                        <td>@j.Contact_Person</td>
+                        <td>@j.Status</td>
+                        <td>@j.Contact_ID</td>
+
+                      @if (j.Prob_Conversion_100)
+                      {
+                         <td>100% </td>
+                      }
+                      
+
+                     @if (j.Prob_Conversion_gt80)
+                     {
+                      <td> >80% </td>
+                     }
+                   
+                      @if (j.Prob_Conversion_gt50)
+                      {
+                           <td> >50% </td>
+                      }
+                    
+                      @if (j.Prob_Conversion_lt50)
+                      {
+                        <td> < 50%</td>
+                      }
+                      @if(!j.Prob_Conversion_100)
+                      {
+                          if (!j.Prob_Conversion_gt80)
+                          {
+                              if (!j.Prob_Conversion_gt50)
+                              {
+                                  if(!j.Prob_Conversion_lt50)
+                                  {
+                                      <td>no Data </td>
+                                  }
+                              }
+                          }
+                        
+                      }
+
+                    <td>@j.Conversation_Summary</td>
+
+                </tr>
+
+                 }
+            </tbody>
+        </table>
+    </div>
+</body>

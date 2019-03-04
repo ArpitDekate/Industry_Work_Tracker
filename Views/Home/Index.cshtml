@@ -1,0 +1,390 @@
+﻿@model IEnumerable<LarsenNToubro.Models.Contact_Details>
+@{
+    ViewBag.Title = "Home Page";
+}
+
+<style>
+    .table-sticky1 > thead > tr > th,
+    .table-sticky1 > thead > tr > td {
+        background:#33cc33;
+        color: #fff;
+        top: 0px;
+        position: sticky;
+    }
+    .table-height1 {
+        height: 200px;
+        display: block;
+        overflow: scroll;
+        width: 100%;
+    }
+    table {
+        border-collapse: collapse;
+        border-spacing: 0;
+    }
+   
+</style>
+
+
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <style>
+                @@media only screen and (max-width: 768px) and (min-width: 600px) {
+                    .col-s-1 {
+                        width: 50%;
+                    }
+
+                    .col-s-2 {
+                        width: 50%;
+                        padding-bottom:10px;
+                    }
+
+                    .col-s-3 {
+                        width: 50%;
+                        padding-bottom: 10px;
+                    }
+
+                    .col-s-4 {
+                        width: 50%;
+                    }
+
+                    .col-s-5 {
+                        width: 50%;
+                    }
+                    .col-s-6 {
+                        width: 50%;
+                    }
+                    .col-s-7 {
+                        width: 50%;
+                    }
+                    .col-s-8 {
+                        width: 100%;
+                        padding-top:10px;
+                    }
+
+                    .col-s-9 {
+                        width: 100%;
+                        padding-bottom:10px;
+                    }
+
+                    .col-s-10 {
+                        width: 50%;
+                    }
+
+                    .col-s-11 {
+                        width: 50%;
+                    }
+
+                    .col-s-12 {
+                        width: 50%;
+                    }
+                    .col-s-13 {
+                        width: 50%;
+                    }
+                }
+                @@media only screen and (max-width: 600px) 
+                {
+                     #slideshow { display: none; }   
+                     .col-s-2{
+                         padding-bottom:10px;
+                     }
+                    .col-s-3 {
+                        padding-bottom: 10px;
+                    }
+                    .col-s-4 {
+                        padding-bottom: 10px;
+                    }
+                    .col-s-6 {
+                        padding-bottom: 10px;
+                    }
+                    .col-s-7 {
+                        padding-bottom: 10px;
+
+                    }
+                    .col-s-9 {
+                        padding-bottom: 10px;
+                    }
+                    .col-s-10 {
+                        padding-bottom: 10px;
+                    }
+                    .col-s-12 {
+                        padding-bottom: 10px;
+                    }
+                }
+    </style>
+</head> 
+
+
+
+
+<body style="background-image: url('/Content/img/back0.jpg')">
+    <div class="row ">
+        <div class="col-md-12  " id="slideshow">
+            <div id="Home_Slider" class="carousel slide" data-ride="carousel">
+                <ol class="carousel-indicators">
+                    <li data-target="#Indicators" data-slide-to="0" class="active"></li>
+                    <li data-target="#Indicators" data-slide-to="1"></li>
+                    <li data-target="#Indicators" data-slide-to="2"></li>
+                </ol>
+                <div class="carousel-inner">
+                    <div class="carousel-item active">
+                        <img class="d-block w-100" src="~/Content/img/lnt_brand.png" alt="First slide" />
+                    </div>
+                    <div class="carousel-item">
+                        <img class="d-block w-100" src="~/Content/img/download.png" alt="Second slide" />
+                    </div>
+                    <div class="carousel-item">
+                        <img class="d-block w-100" src="~/Content/img/ai.png" alt="Third slide" />
+                    </div>
+                </div>
+                <a class="carousel-control-prev" href="#Home_Slider" role="button" data-slide="prev">
+                    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                    <span class="sr-only">Previous</span>
+                </a>
+                <a class="carousel-control-next" href="#Home_Slider" role="button" data-slide="next">
+                    <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                    <span class="sr-only">Next</span>
+                </a>
+            </div>
+        </div>
+    </div>
+    @using (Html.BeginForm("LogOff", "Home", FormMethod.Post, new { role = "form" }))
+    {
+        @Html.AntiForgeryToken()
+        <input type="submit" value="Logout" class="btn btn-primary" />
+    }
+    <div style="padding-top: 20px">
+        <div class="row">
+            <div class="col-md-4 "></div>
+            <div class="col-md-4">
+                <button class="btn btn-primary btn-lg" style="min-width: 100%; background-color:#8e7de4;white-space:normal !important; word-wrap: break-word; word-break: normal;">EDP Division Details</button>
+            </div>
+        </div>
+        <br />
+        <div class="row">
+            <div class="col-md-3 col-s-2">
+                <button class="btn btn-primary btn-lg" style="min-width: 100%; background-color:#399de0;white-space:normal !important; word-wrap: break-word; word-break: normal;" data-toggle="modal" data-target="#meeting_dates">Meeting Dates</button>
+            </div>
+            <div class="col-md-3 col-s-3">
+                <button class="btn btn-primary btn-lg" style="min-width: 100%; background-color:#e46969;white-space:normal !important; word-wrap: break-word; word-break: normal;">Proposals Details</button>
+            </div>
+            <div class="col-md-3 col-s-4">
+                <button class="btn btn-primary btn-lg" style="min-width: 100%; background-color:#45c2be;white-space:normal !important; word-wrap: break-word; word-break: normal;">Revenue Pipeline</button>
+            </div>
+            <div class="col-md-3 col-s-5">
+                <button class="btn btn-primary btn-lg" style="min-width: 100%; background-color:#de5891;white-space:normal !important; word-wrap: break-word; word-break: normal;">Prospects</button>
+            </div>
+        </div>
+        <br />
+        <div class="row">
+            <div class="col-md-4 col-s-6">
+                <button class="btn btn-primary btn-lg" style="min-width: 100%; background-color:#e1994a;white-space:normal !important; word-wrap: break-word; word-break: normal;" data-toggle="modal" data-target="#opportunity_active">Opportunity Details(Active)</button>
+            </div>
+            <div class="col-md-4 col-s-7">
+                <!--    <button class="btn btn-primary btn-lg" style="min-width: 100%; background-color:#5180d5;white-space:normal !important; word-wrap: break-word; word-break: normal" ; onclick="@("window.location.href='" + @Url.Action("Opportunity_Converted", "Home") + "'");">Opportunity Details(Converted)</button>
+                 -->
+                <button class="btn btn-primary btn-lg" style="min-width: 100%; background-color:#5180d5;white-space:normal !important; word-wrap: break-word; word-break: normal;" data-toggle="modal" data-target="#opportunity_converted">Opportunity Details(Converted)</button>
+            </div>
+            <div class="col-md-4 col-s-8">
+                <button class="btn btn-primary btn-lg" style="min-width: 100%; background-color:#9e5bc7;white-space:normal !important; word-wrap: break-word; word-break: normal;" data-toggle="modal" data-target="#opportunity_lost">Opportunities Lost</button>
+            </div>
+        </div>
+        <br />
+        <div class="row">
+            <div class="col-md-4 col-s-9">
+                <button class="btn btn-primary btn-lg" style="min-width: 100%; background-color:#9a8686;white-space:normal !important; word-wrap: break-word; word-break: normal;">Proof of Concept Details</button>
+            </div>
+            <div class="col-md-4 col-s-10">
+                <button class="btn btn-primary btn-lg" style="min-width: 100%; background-color:#7896cc;white-space:normal !important; word-wrap: break-word; word-break: normal;">Patents Details</button>
+            </div>
+            <!--------------------------------------------------------------------------------------------------------------------->
+            <div class="col-md-4 col-s-11">
+                <!--   <button class="btn btn-primary btn-lg" style="min-width: 100%; background-color:#9a5dde;white-space:normal !important; word-wrap: break-word; word-break: normal;" data-toggle="modal"">
+                Action Items
+                 </button>-->
+                <button class="btn btn-primary btn-lg" style="min-width: 100%; background-color:#9a5dde;white-space:normal !important; word-wrap: break-word; word-break: normal;" data-toggle="modal" data-target="#action_items">Action Items</button>
+            </div>
+
+            <!--------------------------------------------------------------------------------------------------------------------->
+        </div>
+        <br />
+        <div class="row">
+            <div class="col-md-6 col-s-12">
+                <button class="btn btn-primary btn-lg" onclick="location.href='@Url.Action("Industry_Records", "Home")'" style="min-width: 100%; background-color:#de7c3a;white-space:normal !important; word-wrap: break-word; word-break: normal;">Industry Records</button>
+            </div>
+            <div class="col-md-6 col-s-13">
+                <button class="btn btn-primary btn-lg" style="min-width: 100%; background-color:#cc7c5d;white-space:normal !important; word-wrap: break-word; word-break: normal;">Account Plans</button>
+            </div>
+        </div>
+    </div>
+
+
+    <!----------------------------------|--------------------------------------------------------------------------------------->
+    <!----------------------------------|-------------Meeting Dates Start Dynamic Dialog box------------------------------------------------------->
+    <!----------------------------------V--------------------------------------------------------------------------------------->
+
+    <div class="modal fade" id="meeting_dates" data-backdrop="static" data-keyboard="false">
+        <div class="modal-dialog modal-lg modal-dialog-centered" style="min-width:90%">
+            <div class="modal-content">
+
+                <div class="modal-header">
+                    <h4 class="modal-title">Contact Details</h4><hr /><hr />
+                    <button type="button" class="close" data-dismiss="modal">&times;</button>
+                </div>
+
+                <div class="modal-body">
+                    <input type="text" class="form-control" style="min-width: 100%" placeholder="Search" id="Search" />
+                    <div class="table-responsive table-height1">
+                        <table class="table table-striped table-bordered table-sticky1">
+                            <thead>
+                                <tr>
+                                    <th style="font-family:Verdana;font:bold"> Id </th>
+                                    <th style="font-family:Verdana;font:bold"> Contact Name </th>
+                                    <th style="font-family:Verdana;font:bold"> Status </th>
+                                    <th style="font-family:Verdana;font:bold"> Designation </th>
+                                    <th style="font-family:Verdana;font:bold"> Department </th>
+                                    <th style="font-family:Verdana;font:bold"> Email </th>
+                                    <th style="font-family:Verdana;font:bold"> Mobile </th>
+                                    <th style="font-family:Verdana;font:bold"> LinkedIn </th>
+                                    <th style="font-family:Verdana;font:bold"> Office_Ph </th>
+                                    <th style="font-family:Verdana;font:bold"> Responsible For </th>
+                                    <th style="font-family:Verdana;font:bold"> Area of Interest </th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                @foreach (var i in Model)
+                                {
+                                    <tr class="Search">
+                                        <td style="font-family:Verdana;">@i.Opportunity_id</td>
+                                        <td style="font-family:Verdana;">@i.Contact_Name</td>
+                                        <td style="font-family:Verdana;">@i.Status</td>
+                                        <td style="font-family:Verdana;">@i.Designation</td>
+                                        <td style="font-family:Verdana;">@i.Department</td>
+                                        <td style="font-family:Verdana;">@i.Email</td>
+                                        <td style="font-family:Verdana;">@i.Mobile</td>
+                                        <td style="font-family:Verdana;">@i.LinkedIn</td>
+                                        <td style="font-family:Verdana;">@i.Office_ph</td>
+                                        <td style="font-family:Verdana;">@i.Responsible_for</td>
+                                        <td style="font-family:Verdana;">@i.Area</td>
+                                    </tr>
+                                }
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-danger btn-lg" data-dismiss="modal">Close</button>
+                </div>
+
+            </div>
+        </div>
+    </div>
+
+    <!----------------------------------|--------------------------------------------------------------------------------------->
+    <!----------------------------------|-------------ACTION Items Start Dynamic Dialog box-------------------------------------------------------->
+    <!----------------------------------V--------------------------------------------------------------------------------------->
+
+    <div class="modal fade" id="action_items" data-backdrop="static" data-keyboard="false">
+        <div class="modal-dialog modal-lg modal-dialog-centered" style="min-width:90%">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h4 class="modal-title">Contact History</h4>
+                    <button type="button" class="close" data-dismiss="modal">&times;</button>
+                </div>
+                <div class="modal-body">
+                    <!--    <input type="text" class="form-control" style="min-width: 100%" placeholder="Search" id="Search" />-->
+                    @Html.Partial("/Views/Home/Action_Items.cshtml")
+                </div>
+
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-danger btn-lg" data-dismiss="modal">Close</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!---------------------------------|---------------------------------------------------------------------------------------->
+    <!---------------------------------|--------------Opportunities Details Converted Start Dynamic Dialog box------------------------------------->
+    <!---------------------------------V---------------------------------------------------------------------------------------->
+    <div class="modal fade" id="opportunity_converted" data-backdrop="static" data-keyboard="false">
+        <div class="modal-dialog modal-lg modal-dialog-centered" style="min-width:90%">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h4 class="modal-title">Opportunity Details (Converted) </h4>
+                    <button type="button" class="close" data-dismiss="modal">&times;</button>
+                </div>
+                <div class="modal-body">
+                    @Html.Partial("/Views/Home/Opportunity_Converted.cshtml", TempData["oplist"])
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-danger btn-lg" data-dismiss="modal">Close</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+    <!---------------------------------|---------------------------------------------------------------------------------------->
+    <!---------------------------------|--------------Opportunities Details Active-> Start Dynamic Dialog box------------------------------------->
+    <!---------------------------------V---------------------------------------------------------------------------------------->
+    <div class="modal fade" id="opportunity_active" data-backdrop="static" data-keyboard="false">
+        <div class="modal-dialog modal-lg modal-dialog-centered" style="min-width:90%">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h4 class="modal-title">Opportunity Details (Active) </h4>
+                    <button type="button" class="close" data-dismiss="modal">&times;</button>
+                </div>
+                <div class="modal-body">
+                    @Html.Partial("/Views/Home/Opportunity_Active.cshtml", TempData["oplist"])
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-danger btn-lg" data-dismiss="modal">Close</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+    <!---------------------------------|---------------------------------------------------------------------------------------->
+    <!---------------------------------|--------------Opportunities Details Lost-> Start Dynamic Dialog box------------------------------------->
+    <!---------------------------------V---------------------------------------------------------------------------------------->
+    <div class="modal fade" id="opportunity_lost" data-backdrop="static" data-keyboard="false">
+        <div class="modal-dialog modal-lg modal-dialog-centered" style="min-width:90%">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h4 class="modal-title">Opportunity Details (Lost) </h4>
+                    <button type="button" class="close" data-dismiss="modal">&times;</button>
+                </div>
+                <div class="modal-body">
+                    @Html.Partial("/Views/Home/Opportunity_Lost.cshtml", TempData["oplist"])
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-danger btn-lg" data-dismiss="modal">Close</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+</body>
+
+@section Scripts
+{
+    <script >
+        $(document).ready(function () {
+            function Contains(text_one, text_two) {
+                if (text_one.indexOf(text_two) != -1)
+                    return true;
+            }  
+            $("#Search").keyup(function () {
+                var searchText = $("#Search").val().toLowerCase();
+                $(".Search").each(function() {
+                    if(!Contains($(this).text().toLowerCase(), searchText)) {
+                    $(this).hide();
+                }
+                else {
+                    $(this).show();
+                }
+                });
+            });
+        });
+    </script>
+}

@@ -1,0 +1,78 @@
+﻿@{
+    ViewBag.Title = "Contact";
+}
+
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN"
+          "http://www.w3.org/TR/html4/strict.dtd">
+<html>
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
+    <title>Enable/Disable</title>
+    <script type='text/javascript'>
+        if (typeof window.onload == 'function') { motorCheckbox_OL = window.onload; }
+        window.onload = function () {
+            if (window.motorCheckbox_OL) motorCheckbox_OL();
+            var i, ca;
+            ca = document.getElementsByName('motorCheckbox');
+            for (i = 0; i < ca.length; ++i) {
+                ca[i].onclick = motorCheckbox_click;
+            }
+        }
+        function motorCheckbox_click() {
+            // find parent TR
+            var tr = this.parentNode;
+            while (tr && tr.nodeName.toLowerCase() != 'tr') {
+                tr = tr.parentNode;
+            }
+            if (tr) {
+                // get all inputs contained by TR
+                var i, ipts = tr.getElementsByTagName('input'), tas = tr.getElementsByTagName('textarea');
+                for (i = 0; i < ipts.length; ++i) {
+                    if (ipts[i].type.match('text')) { // filter out 'text' inputs
+                        ipts[i].disabled = !this.checked;
+                    }
+                }
+                for (i = 0; i < tas.length; ++i) {
+                    tas[i].disabled = !this.checked;
+                }
+            }
+        }
+    </script>
+</head>
+<body>
+    <h3>Enable/Disable All Text Inputs On Same Row As Checkbox</h3>
+    <table width="50%" border="1">
+        <tr>
+            <th scope="col">
+                <table width="100%">
+                    <tr>
+                        <td width="72"><span class="fieldname">Applicable?</span></td>
+                        <td width="1014">Condition</td>
+                        <td width="70">Score</td>
+                    </tr>
+                    <tr>
+                        <td><input type="checkbox" name="motorCheckbox" value="foo"></td>
+                        <td><textarea name="toppfart" cols="10" disabled style="width:100%">Good: Latest audited annual financial statements are signed off less than 90 days after the financial year end</textarea></td>
+                        <td><input type="text" size="10" name="motorinstallasjon" disabled="true"></td>
+                    </tr>
+                    <tr>
+                        <td><input name="motorCheckbox" type="checkbox" id="motorCheckbox" value="foo"></td>
+                        <td><textarea name="toppfart" cols="10" disabled id="toppfart" style="width:100%">Acceptable: Latest audited annual financial statements are signed off from 90 to less than 120 days after the financial year end </textarea></td>
+                        <td><input type="text" size="10" name="motorinstallasjon3" disabled="true"></td>
+                    </tr>
+                    <tr>
+                        <td><input name="motorCheckbox" type="checkbox" id="motorCheckbox" value="foo"></td>
+                        <td><textarea name="toppfart" cols="10" disabled id="toppfart" style="width:100%">Poor: Latest audited annual financial statements are signed off from 120 to less than 180 days after the financial year end </textarea></td>
+                        <td><input type="text" size="10" name="motorinstallasjon2" disabled="true"></td>
+                    </tr>
+                    <tr>
+                        <td><input name="motorCheckbox" type="checkbox" id="motorCheckbox" value="foo"></td>
+                        <td><textarea name="toppfart" cols="10" disabled id="toppfart" style="width:100%">Unacceptable: Latest audited annual financial statements are signed off 180 days or more after the financial year end or latest audited annual financial statements are not available </textarea></td>
+                        <td><input type="text" size="10" name="motorinstallasjon4" disabled="true"></td>
+                    </tr>
+                </table>
+            </th>
+        </tr>
+    </table>
+</body>
+</html>

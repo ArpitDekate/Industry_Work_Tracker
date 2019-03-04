@@ -1,0 +1,126 @@
+﻿@model LarsenNToubro.Models.Login_Page
+
+@{
+    ViewBag.Title = "Login";
+}
+
+<style>
+    #text {
+        display: none;
+        color: red
+    }
+
+    @@media only screen and (max-width: 800px){
+        
+        .bdy{
+            width:auto;
+        }
+        .col-s-1 {
+            width: 50%;
+             margin-left:0%;
+             padding-top:0px;
+             padding-right:0px;
+        }
+
+        .col-s-2 {
+            width: 50%;
+            padding-bottom: 10px;
+        }
+
+        .col-s-3 {
+            width: 50%;
+            padding-bottom: 10px;
+        }
+
+        .col-s-4 {
+            width: 50%;
+        }
+    }
+</style>
+
+
+<head>
+    <script type="text/javascript">
+        function preventBack() { window.history.forward(); }
+        setTimeout("preventBack()", 0);
+        window.onunload = function () { null };
+    </script>
+    <h style="font-size:40px">Login Page</h>
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="//netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap.min.css" rel="stylesheet">
+    <script>
+
+        function myFunction() {
+            var x = document.getElementById("myInput");
+            if (x.type === "password") {
+                x.type = "text";
+            } else {
+                x.type = "password";
+            }
+        }
+    </script>
+
+    <script>
+        /*for CAPS LOCK*/
+
+        var input = document.getElementById("myInput");
+        var text = document.getElementById("text");
+        input.addEventListener("keyup", function (event) {
+            if (event.getModifierState("CapsLock")) {
+                text.style.display = "block";
+            } else {
+                text.style.display = "none"
+            }
+        });
+    </script>
+    <link href="~/Content/bootstrap.min.css" rel="stylesheet" />
+
+
+
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css" integrity="sha384-rHyoN1iRsVXV4nD0JutlnGaslCJuC7uwjduW9SVrLvRYooPp2bWYgmgJQIXwl/Sp" crossorigin="anonymous">
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+
+
+</head>
+@using (Html.BeginForm()) 
+{
+    @Html.AntiForgeryToken()
+
+    <body  class="bdy"  style="width:700px;height:600px; margin:2% auto 0px 30%;background-image: url('/Content/img/imop1.jpg')">
+        <div class="form-horizontal">
+            <br />
+            <br />
+            @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+            <div class="form-group row " style="align-self:center">
+                <span class="glyphicon glyphicon-user"  style="font-size:25px ; font-display:block ;margin-left:15%;padding-top:15px;padding-right:15px"></span>
+            <div class="col-md-6">
+                       <input type="text"  style="margin-top:10px;font-size:15px"  class="form-control col-s-2" id="u_name" placeholder="User Name" name="Username" tabindex="6">
+                </div>
+            </div>
+
+            <div class="form-group row" style="align-self:center">
+                <span class="glyphicon glyphicon-lock" style="font-size:25px;font-display:block;margin-left:15%;padding-top:15px; padding-left:4px;padding-right:14px"></span>
+                <div class="col-md-6">
+                    <input type="password" style="margin-top:10px ;font-size:15px" class="form-control col-s-4 " id="myInput" placeholder=" Password" name="Password" />
+                    @Html.ValidationMessageFor(model => model.Password, "", new { @class = "text-danger" })
+                    <p id="text">WARNING! Caps lock is ON.</p>
+                    <br />
+                    <input type="checkbox" onclick="myFunction()">Show Password
+
+                </div>
+            </div>
+
+         
+            <div class="form-group">
+                <input type="submit" value="Submit" class="btn btn-dark" style="margin-left:20%; font-size:15px ;width:10%" />
+            </div>
+
+            @if (ViewBag.error != null)
+            {
+                <p>@ViewBag.error</p>
+            }
+        </div>
+    </body>
+    }
